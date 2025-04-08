@@ -1,0 +1,25 @@
+# 유니티 불필요 파일/폴더 무시
+Unity/SWHIIProject/Library/
+Unity/SWHIIProject/Temp/
+Unity/SWHIIProject/Obj/
+Unity/SWHIIProject/Build/
+Unity/SWHIIProject/Builds/
+Unity/SWHIIProject/Logs/
+Unity/SWHIIProject/UserSettings/
+Unity/SWHIIProject/.vs/
+Unity/SWHIIProject/.idea/
+
+# 빌드 시 생성되는 시스템 파일
+*.csproj
+*.sln
+*.user
+*.unityproj
+*.pidb
+*.booproj
+
+# OS 관련
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code
+.vscode/
