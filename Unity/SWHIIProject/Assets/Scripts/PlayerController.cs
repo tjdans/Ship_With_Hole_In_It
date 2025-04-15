@@ -45,10 +45,12 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private PlayerState currentState = PlayerState.Idle;
 
+    PlayerStat player = new();
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        player = gameObject.AddComponent<PlayerStat>();
     }
 
 
@@ -99,7 +101,8 @@ public class PlayerController : MonoBehaviour
 
         UpdateState();
         UpdateAnimator();
-     }
+        CharacterStat();
+    }
 
     // 입력 벡터에 따라 이동 처리
     private void HandleMovement()
@@ -229,6 +232,40 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isJumpping", currentState == PlayerState.Jump);
         animator.SetBool("isRolling", currentState == PlayerState.Roll);
     }
-  
+
+    //플레이어 상태이상효과
+    public void CharacterStat()
+    {
+        //탈진상태인 경우에서 일단 스테미너 회복 최대치까지 안됬을경우
+        if (player.Sit.HasFlag(PlayerStat.situation.exhaustion))
+        {
+            //안되는 행동들 코드적기
+        }
+        //탈진상태 제거시(PlayerStat코드)
+        else
+        {
+            player.Stamina += (int)Time.time;
+        }
+        //배고파서 채력 떨어지는경우(피격당할때 hp감소되는건 따로 함수쓰는게 나을듯? 싶어서? ㅇㅇ)
+        if (player.Sit.HasFlag(PlayerStat.situation.hunger))
+        {
+            player.Hp -= (int)Time.time;
+        }
+        //배고픈상태 아닌경우(PlayerStat코드)
+        else
+        {
+            player.Hp += (int)Time.time;
+        }
+        //무겁데
+        if (player.Sit.HasFlag(PlayerStat.situation.haviness))
+        {
+            //안되는 행동들 적기
+        }
+        //변수명 고치기 귀찮아서 내일고침 목마름수치 0되면 스테미너 회복정지
+        if (player.Sit.HasFlag(PlayerStat.situation.thirst))
+        {
+            player.Stamina += 0;
+        }
+    }
 
 }
