@@ -129,9 +129,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""CameraZoom"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""a4e78fbd-13b0-417f-b8d9-be3de6cc8483"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -229,7 +229,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1192f46f-2270-447c-8ea2-4303de7150ae"",
-                    ""path"": ""<Mouse>/scroll"",
+                    ""path"": ""<Keyboard>/f5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
