@@ -241,11 +241,6 @@ public class PlayerController : MonoBehaviour
         {
             //안되는 행동들 코드적기
         }
-        //탈진상태 제거시(PlayerStat코드)
-        else
-        {
-            player.Stamina += (int)Time.time;
-        }
         //배고파서 채력 떨어지는경우(피격당할때 hp감소되는건 따로 함수쓰는게 나을듯? 싶어서? ㅇㅇ)
         if (player.Sit.HasFlag(PlayerStat.situation.hunger))
         {
@@ -265,6 +260,10 @@ public class PlayerController : MonoBehaviour
         if (player.Sit.HasFlag(PlayerStat.situation.thirst))
         {
             player.Stamina += 0;
+        }
+        else
+        {
+            player.Stamina += (int)Time.time;
         }
     }
 

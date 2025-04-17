@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStat : MonoBehaviour
 {
     //각 최대스텟
+    [Header("Max Player Stat")]
     private int maxhungryStat = 100;
     private int maxthirstyStat = 100;
     private int maxtemperature = 100;
@@ -12,6 +13,7 @@ public class PlayerStat : MonoBehaviour
     private int maxweight = 100;
 
     //각 현재스텟
+    [Header("Current Player Stat")]
     private int hungryStat;
     private int thirstyStat;
     private int temperature;
