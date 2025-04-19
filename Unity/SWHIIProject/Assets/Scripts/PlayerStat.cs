@@ -11,6 +11,9 @@ public class PlayerStat : MonoBehaviour
     private int maxhp = 100;
     private int maxstamina = 100;
     private int maxweight = 100;
+    //목마름,배고픔 소모 수치
+    private int maxhpregeneration = 1;
+    private int maxstaminaregeneration = 1;
 
     //각 현재스텟
     [Header("Current Player Stat")]
@@ -20,7 +23,9 @@ public class PlayerStat : MonoBehaviour
     private int hp;
     private int stamina;
     private int weight;
-
+    //목마름,배고픔 소모 수치
+    private int hpregeneration;
+    private int staminaregeneration;
 
     //상태이상 여러개 될수있으니
     [Flags]
@@ -33,6 +38,7 @@ public class PlayerStat : MonoBehaviour
         dead
     }
     public situation Sit;
+
     public int Hp
     {
         get
@@ -146,9 +152,32 @@ public class PlayerStat : MonoBehaviour
             }
         }
     }
-
+   
+    //축약 쌉가능이긴한데 혹시 모르니까 다 풀어서쓰는 체력,스테미나 재생 프로퍼티
+    public int Hpregeneration
+    {
+        get
+        {
+            return hpregeneration;
+        }
+        set
+        {
+            hpregeneration = value;
+        }
+    }
+    public int Staminaregeneration
+    {
+        get
+        {
+            return staminaregeneration;
+        }
+        set 
+        {
+            staminaregeneration = value;
+        }
+    }
     //캐릭터생성뿐만아니라 장비장착에도 쓸수있을거같아서 =0 붙임 맨처음 스텟을 0으로 맞춰두고 하면되지않을까
-    public PlayerStat(int hungryStat = 0, int thirstyStat = 0, int temperature = 0, int hp = 0, int stamina = 0, int weight = 0)
+    public PlayerStat(int hungryStat = 0, int thirstyStat = 0, int temperature = 0, int hp = 0, int stamina = 0, int weight = 0, int hpregeneration = 0, int stregeneration = 0)
     {
         this.maxhungryStat += hungryStat;
         this.maxthirstyStat += thirstyStat;
@@ -156,5 +185,7 @@ public class PlayerStat : MonoBehaviour
         this.maxhp += hp;
         this.maxstamina = stamina;
         this.maxweight = weight;
+        this.maxhpregeneration += hpregeneration;
+        this.maxstaminaregeneration += stregeneration;
     }
 }

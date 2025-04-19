@@ -254,7 +254,14 @@ public class PlayerController : MonoBehaviour
         //무겁데
         if (player.Sit.HasFlag(PlayerStat.situation.haviness))
         {
-            //안되는 행동들 적기
+            //일단 2배깍이는거
+            player.HungryStat -= player.Hpregeneration * 2 * (int)Time.time;
+            player.ThirstyStat -= player.Staminaregeneration * 2 * (int)Time.time;
+        }
+        else
+        {
+            player.HungryStat -= player.Hpregeneration  * (int)Time.time;
+            player.ThirstyStat -= player.Staminaregeneration * (int)Time.time;
         }
         //변수명 고치기 귀찮아서 내일고침 목마름수치 0되면 스테미너 회복정지
         if (player.Sit.HasFlag(PlayerStat.situation.thirst))
