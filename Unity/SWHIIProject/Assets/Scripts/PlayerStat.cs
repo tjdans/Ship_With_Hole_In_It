@@ -11,9 +11,6 @@ public class PlayerStat : MonoBehaviour
     private int maxhp = 100;
     private int maxstamina = 100;
     private int maxweight = 100;
-    //목마름,배고픔 소모 수치
-    private int maxhpregeneration = 1;
-    private int maxstaminaregeneration = 1;
 
     //각 현재스텟
     [Header("Current Player Stat")]
@@ -24,14 +21,16 @@ public class PlayerStat : MonoBehaviour
     private int stamina;
     private int weight;
     //목마름,배고픔 소모 수치
-    private int hpregeneration;
-    private int staminaregeneration;
+    private int hpregeneration=1;
+    private int staminaregeneration=1;
 
     //상태이상 여러개 될수있으니
     [Flags]
     public enum situation
     {
+        smallhunger,
         hunger,
+        smallthirst,
         exhaustion,
         haviness,
         thirst,
@@ -69,7 +68,12 @@ public class PlayerStat : MonoBehaviour
         set
         {
             hungryStat = value;
-            if (hungryStat <= 0)
+            //배고픔 수치가 일정비율 이하라면 발생되는 체력재생디버프
+            if (hungryStat <= (maxhungryStat * 0.5) && hungryStat > 0)
+            {
+                Sit |= situation.smallhunger;
+            }
+            else if (hungryStat <= 0)
             {
                 hungryStat = 0;
                 //안되면 float로 바꾸지 뭐
@@ -78,6 +82,10 @@ public class PlayerStat : MonoBehaviour
             if (Sit.HasFlag(situation.hunger) && hungryStat > 0)
             {
                 Sit &= ~situation.hunger;
+            }
+            if (Sit.HasFlag(situation.smallhunger)&& hungryStat > (maxhungryStat * 0.5f))
+            {
+                Sit &= ~situation.smallhunger;
             }
             if (hungryStat > maxhungryStat)
             {
@@ -94,10 +102,20 @@ public class PlayerStat : MonoBehaviour
         set
         {
             thirstyStat = value;
-            if (thirstyStat <= 0)
+            //수분 수치가 일정비율 이하라면 발생되는 체력재생디버프
+            if (ThirstyStat <= (maxthirstyStat * 0.5) && thirstyStat > 0)
+            {
+                Sit |= situation.smallthirst;
+            }
+            //0이되면 발생하는 탈진상태
+            else if (thirstyStat <= 0)
             {
                 thirstyStat = 0;
                 Sit |= situation.exhaustion;
+            }
+            if (Sit.HasFlag(situation.smallthirst) && thirstyStat > (maxthirstyStat * 0.5f))
+            {
+                Sit &= ~situation.smallthirst;
             }
             if (Sit.HasFlag(situation.exhaustion) && thirstyStat > 0)
             {
@@ -118,11 +136,11 @@ public class PlayerStat : MonoBehaviour
         set
         {
             Weight = value;
-            if (Weight <= maxweight)
+            if (Weight > maxweight)
             {
                 Sit |= situation.haviness;
             }
-            if (Sit.HasFlag(situation.haviness) && weight < maxweight)
+            if (Sit.HasFlag(situation.haviness) && weight <= maxweight)
             {
                 Sit &= ~situation.exhaustion;
             }
@@ -141,6 +159,7 @@ public class PlayerStat : MonoBehaviour
             if (stamina <= 0)
             {
                 Sit |= situation.thirst;
+                stamina = 0;
             }
             if (Sit.HasFlag(situation.thirst) && stamina >= maxstamina)
             {
@@ -185,7 +204,7 @@ public class PlayerStat : MonoBehaviour
         this.maxhp += hp;
         this.maxstamina = stamina;
         this.maxweight = weight;
-        this.maxhpregeneration += hpregeneration;
-        this.maxstaminaregeneration += stregeneration;
+        this.hpregeneration += hpregeneration;
+        this.staminaregeneration += stregeneration;
     }
 }

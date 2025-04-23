@@ -302,36 +302,47 @@ public class PlayerController : MonoBehaviour
         {
             //안되는 행동들 코드적기
         }
+        //플레이어 배고픔수치가 50%이하일 경우 채력재생 정지
+        if (player.Sit.HasFlag(PlayerStat.situation.smallhunger))
+        {
+            player.Hp += player.Hpregeneration * 0;
+        }
         //배고파서 채력 떨어지는경우(피격당할때 hp감소되는건 따로 함수쓰는게 나을듯? 싶어서? ㅇㅇ)
-        if (player.Sit.HasFlag(PlayerStat.situation.hunger))
+        else if (player.Sit.HasFlag(PlayerStat.situation.hunger))
         {
             player.Hp -= (int)Time.time;
         }
-        //배고픈상태 아닌경우(PlayerStat코드)
         else
         {
-            player.Hp += (int)Time.time;
+            player.Hp += player.Hpregeneration * (int)Time.time;
         }
         //무겁데
         if (player.Sit.HasFlag(PlayerStat.situation.haviness))
         {
-            //일단 2배깍이는거
+            //무게를 초과하여 들 경우 2배로 배고픔,수분수치 감소 + 이속 50%로 감소
             player.HungryStat -= player.Hpregeneration * 2 * (int)Time.time;
             player.ThirstyStat -= player.Staminaregeneration * 2 * (int)Time.time;
+            moveSpeed = 2.5f; // 일단 숫자로 함 아직 뭐 더 안나왔으니
         }
         else
         {
             player.HungryStat -= player.Hpregeneration * (int)Time.time;
             player.ThirstyStat -= player.Staminaregeneration * (int)Time.time;
+            moveSpeed = 5.0f;
         }
         //변수명 고치기 귀찮아서 내일고침 목마름수치 0되면 스테미너 회복정지
+        //플레이어 목마름수치가 50%이하일 경우 스테미너 회복 속도 감소
+        if (player.Sit.HasFlag(PlayerStat.situation.smallhunger))
+        {
+            player.Hp += player.Staminaregeneration * (int)Time.time/2;
+        }
         if (player.Sit.HasFlag(PlayerStat.situation.thirst))
         {
-            player.Stamina += 0;
+            player.Stamina += player.Staminaregeneration * 0;
         }
         else
         {
-            player.Stamina += (int)Time.time;
+            player.Stamina += player.Staminaregeneration * (int)Time.time;
         }
     }
   }
