@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private PlayerState currentState = PlayerState.Idle;
 
-<<<<<<< HEAD
     PlayerStat player = new();
     private bool wasGrounded = false;
 
@@ -99,6 +98,7 @@ public class PlayerController : MonoBehaviour
             // 활공 중일 때 스페이스바 누르면 활공 종료
             isGliding = false;
             hasJump = false;
+            animator.SetTrigger("isIdleJump");
             currentState = PlayerState.Jump;
             UpdateAnimator(); // 즉시 애니메이터 업데이트
             Debug.Log("[활공 중 취소 → 점프 상태로]");
@@ -125,24 +125,6 @@ public class PlayerController : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         Debug.Log("Attack");
-    }
-
-    private void Update()
-     {
-        if(isRolling)
-        {
-            HandleRoll();
-        }
-        else
-        {
-            HandleMovement();
-            HandleJump();
-            ApplyGravity();
-        }
-
-        UpdateState();
-        UpdateAnimator();
-        CharacterStat();
     }
 
     //--------------플레이어 조작 관련 함수들-------------------------
@@ -353,4 +335,3 @@ public class PlayerController : MonoBehaviour
         }
     }
   }
-}
