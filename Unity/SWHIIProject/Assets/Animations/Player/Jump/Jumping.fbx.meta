@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27511f5575217d64189f51578fc1c983
+guid: 1bc74cc457feda5478964ef064d0bb46
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Roll
+      name: Jumping
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 142
+      lastFrame: 113
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -44,12 +44,12 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -598,7 +598,7 @@ ModelImporter:
     - name: RightEye
       parentName: Head
       position: {x: 0.042515803, y: 0.07363, z: 0.039999988}
-      rotation: {x: 1, y: -0, z: 0, w: -6.123234e-17}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: Hair
       parentName: Head
@@ -848,7 +848,7 @@ ModelImporter:
     - name: RightShoulder
       parentName: Spine02
       position: {x: 0.049999997, y: 0.044999998, z: -0.04000001}
-      rotation: {x: 1, y: -0, z: 0, w: -6.123234e-17}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: RightArm
       parentName: RightShoulder
@@ -988,12 +988,12 @@ ModelImporter:
     - name: HoodSubRightA01
       parentName: Spine02
       position: {x: 0.037, y: 0.040999997, z: -0.14265871}
-      rotation: {x: 1, y: -0, z: 0, w: -6.123234e-17}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: HoodSubRightB01
       parentName: Spine02
       position: {x: 0.065, y: 0.047, z: -0.1256587}
-      rotation: {x: 1, y: -0, z: 0, w: -6.123234e-17}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: LeftBust
       parentName: Spine01
@@ -1003,7 +1003,7 @@ ModelImporter:
     - name: RightBust
       parentName: Spine01
       position: {x: 0.056709297, y: 0.06273, z: 0.030404791}
-      rotation: {x: 1, y: -0, z: 0, w: -6.123234e-17}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: FastenerFront
       parentName: Spine01
@@ -1043,7 +1043,7 @@ ModelImporter:
     - name: RightUpLeg
       parentName: Hips
       position: {x: 0.065, y: -0.035, z: -0.0050000087}
-      rotation: {x: 1, y: -0, z: 0, w: -6.123234e-17}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: RightLeg
       parentName: RightUpLeg
