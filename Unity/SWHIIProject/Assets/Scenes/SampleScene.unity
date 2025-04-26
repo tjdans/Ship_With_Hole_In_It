@@ -617,6 +617,7 @@ MonoBehaviour:
   glideGravity: -2
   maxGlideFallSpeed: 2
   camerTransform: {fileID: 1454587302}
+  player: {fileID: 0}
 --- !u!95 &862400946
 Animator:
   serializedVersion: 7

@@ -11,18 +11,22 @@ public class PlayerStat : MonoBehaviour
     private int maxhp = 100;
     private int maxstamina = 100;
     private int maxweight = 100;
+    private float maxglidingStat = 100f;
 
     //각 현재스텟
     [Header("Current Player Stat")]
-    private int hungryStat;
+
+    private int hungryStat=100;
     private int thirstyStat;
     private int temperature;
     private int hp;
     private int stamina;
     private int weight;
-    //목마름,배고픔 소모 수치
+    [SerializeField]
+    private float glidingStat=100f;
     private int hpregeneration=1;
     private int staminaregeneration=1;
+
 
     //상태이상 여러개 될수있으니
     [Flags]
@@ -38,6 +42,26 @@ public class PlayerStat : MonoBehaviour
     }
     public situation Sit;
 
+    public float GlidingStat
+    {
+        get
+        {
+            return glidingStat;
+        }
+        set
+        {
+            glidingStat = value;
+            if (glidingStat <= 0)
+            {
+                glidingStat = 0;
+
+            }
+            if (glidingStat >= maxglidingStat)
+            {
+                glidingStat = maxglidingStat;
+            }
+        }
+    }
     public int Hp
     {
         get
@@ -196,7 +220,7 @@ public class PlayerStat : MonoBehaviour
         }
     }
     //캐릭터생성뿐만아니라 장비장착에도 쓸수있을거같아서 =0 붙임 맨처음 스텟을 0으로 맞춰두고 하면되지않을까
-    public PlayerStat(int hungryStat = 0, int thirstyStat = 0, int temperature = 0, int hp = 0, int stamina = 0, int weight = 0, int hpregeneration = 0, int stregeneration = 0)
+    public PlayerStat(int hungryStat = 0, int thirstyStat = 0, int temperature = 0, int hp = 0, int stamina = 0, int weight = 0, int hpregeneration = 0, int stregeneration = 0, float GullidingStat = 0)
     {
         this.maxhungryStat += hungryStat;
         this.maxthirstyStat += thirstyStat;
@@ -206,5 +230,6 @@ public class PlayerStat : MonoBehaviour
         this.maxweight = weight;
         this.hpregeneration += hpregeneration;
         this.staminaregeneration += stregeneration;
+        this.maxglidingStat += GullidingStat;
     }
 }
