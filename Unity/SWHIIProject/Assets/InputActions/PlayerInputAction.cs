@@ -144,6 +144,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8c2ddd6-6699-47fa-9a2c-7b18063ce7ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -256,6 +265,105 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02f3de74-90e9-4776-b5a6-b7ff92000945"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3c30c13-55d1-4d5a-b9c0-834db5aa4d6f"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a761b93-53ab-4f5a-b255-696fc797f9af"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9b3ed79-a41a-4485-95b9-b5fcb3212d64"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e156d620-487d-4500-8505-5be1a56be2dc"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f07af74-d88b-4a47-932e-5e87ac83d4c7"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""84457bb0-bec7-4e0d-a59e-4ac64a773d2b"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d9c3d11-03fe-49e3-bdfe-4e13688c70ad"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49f8e7ea-5e14-4f58-8074-8eeb298a1707"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -270,6 +378,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_CameraLook = m_Player.FindAction("CameraLook", throwIfNotFound: true);
         m_Player_CameraZoom = m_Player.FindAction("CameraZoom", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
+        m_Player_QuickSlot = m_Player.FindAction("QuickSlot", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
@@ -356,6 +465,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CameraLook;
     private readonly InputAction m_Player_CameraZoom;
     private readonly InputAction m_Player_Roll;
+    private readonly InputAction m_Player_QuickSlot;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -391,6 +501,10 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Roll".
         /// </summary>
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/QuickSlot".
+        /// </summary>
+        public InputAction @QuickSlot => m_Wrapper.m_Player_QuickSlot;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -435,6 +549,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
+            @QuickSlot.started += instance.OnQuickSlot;
+            @QuickSlot.performed += instance.OnQuickSlot;
+            @QuickSlot.canceled += instance.OnQuickSlot;
         }
 
         /// <summary>
@@ -464,6 +581,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
+            @QuickSlot.started -= instance.OnQuickSlot;
+            @QuickSlot.performed -= instance.OnQuickSlot;
+            @QuickSlot.canceled -= instance.OnQuickSlot;
         }
 
         /// <summary>
@@ -546,5 +666,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRoll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "QuickSlot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnQuickSlot(InputAction.CallbackContext context);
     }
 }

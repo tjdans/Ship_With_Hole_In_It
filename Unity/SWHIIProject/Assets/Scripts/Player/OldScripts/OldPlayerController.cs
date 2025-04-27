@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 //이 클래스는 오로지 플레이어의 이동,점프,공격, 중력처리하는 클래스임
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class OldPlayerController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5.0f;
@@ -33,16 +33,16 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
 
-    private Vector2 moveInput;
-    private Vector3 rollInput;
-    private Vector3 velocity;
+    private Vector2 moveInput;//W,A,S,D키 입력 되었을 때 값을 담을 변수
+    private Vector3 rollInput; // 
+    private Vector3 velocity; // 중력 힘 변수 
 
     private bool isJumpPressed = false; // 점프키를 눌렀는지 판단하는 변수
-    private bool isRolling = false;
-    private bool isGliding = false;
+    private bool isRolling = false;// 구르기 중인지 확인하는 변수
+    private bool isGliding = false;//활공 중인지 확인하는 변수
     private bool hasJump = false;// 점프 중인지를 판단하는 변수
 
-    private float rollTimer = 0f;
+    private float rollTimer = 0f; // 구르기 시간 rollDuration이 클 수록 구르기 판정의 시간이 증가됌
 
     private Animator animator;
     private PlayerState currentState = PlayerState.Idle;
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
      {
+        //구를때 이동 키 눌러서 더 멀리 구르기 되느걸 방지 하기 위함으로 구를 때 이동 못하게 함
         if(isRolling)
         {
 
@@ -73,7 +74,7 @@ public class PlayerController : MonoBehaviour
         DetectLanding(); // 활공 후 착지할 때 구르기가 시작되게 하는 함수 그냥 점프문에 넣으니깐 작동 안되서 엄청 헤매다 결국 여기에 넣음 Tㅂ
         UpdateState();
         UpdateAnimator();
-        wasGrounded = controller.isGrounded; // 활공 후 착지를 하는데 오류로 지면에 닿아도 착지가 안되서 넣음 Fuck
+      //  wasGrounded = controller.isGrounded; // 활공 후 착지를 하는데 오류로 지면에 닿아도 착지가 안되서 넣음 Fuck
     }
     
     
@@ -173,12 +174,24 @@ public class PlayerController : MonoBehaviour
 
     private void DetectLanding()
     {
-        if (!wasGrounded && controller.isGrounded && isGliding)
+        if (controller.isGrounded && isGliding)
         {
             Debug.Log("[DetectLanding] 활강 후 착지 - 구르기 시작");
             isGliding = false;
             StartRoll();
         }
+        //else
+        //{
+        //    // 활공이 아니고 일반 점프 착지일때
+        //    if (moveInput.sqrMagnitude > 0.1f)
+        //    {
+        //        currentState = PlayerState.Run;
+        //    }
+        //    else
+        //    {
+        //        currentState = PlayerState.Idle;
+        //    }
+        //}
     }
 
     // 점프 처리
@@ -199,12 +212,12 @@ public class PlayerController : MonoBehaviour
             //달리기 점프와 대기 점프 구분 부분
            if(currentState == PlayerState.Run)
             {
-                animator.ResetTrigger("isIdleJump");
+                //animator.ResetTrigger("isIdleJump");
                 animator.SetTrigger("isRunJump");
             }
             else
             {
-                animator.ResetTrigger("isRunJump");
+                //animator.ResetTrigger("isRunJump");
                 animator.SetTrigger("isIdleJump");
             }
         }
@@ -273,13 +286,12 @@ public class PlayerController : MonoBehaviour
             else if(hasJump)
                 currentState = PlayerState.Jump;
         }
-       else if(controller.isGrounded && moveInput.sqrMagnitude > 0.1f)
+       else if(controller.isGrounded)
         {
-            currentState = PlayerState.Run;
-        }
-       else
-        {
-            currentState = PlayerState.Idle;
+            if(moveInput.sqrMagnitude > 0.1f)
+                currentState = PlayerState.Run;
+            else
+                currentState = PlayerState.Idle;
         }
     }
 
