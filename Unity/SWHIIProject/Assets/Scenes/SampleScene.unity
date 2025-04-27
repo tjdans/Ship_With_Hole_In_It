@@ -1035,9 +1035,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862400945}
+      - m_Target: {fileID: 862400942}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnMove
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1051,9 +1051,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862400945}
+      - m_Target: {fileID: 862400942}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnJump
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1115,9 +1115,9 @@ MonoBehaviour:
     m_ActionName: 'Player/CameraZoom[/Keyboard/f5]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862400945}
+      - m_Target: {fileID: 862400942}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnRoll
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1150,27 +1150,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &862400945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862400942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55e3b3a38b5ee547bf38a9de95a1971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rollDistance: 8
-  rollDuration: 1.18
-  jumpForce: 2
-  normalGravity: -9.81
-  glideGravity: -2
-  maxGlideFallSpeed: 2
-  camerTransform: {fileID: 1454587302}
-  player: {fileID: 0}
 --- !u!95 &862400946
 Animator:
   serializedVersion: 7
@@ -1218,6 +1197,26 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &862400948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862400942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ca76428c8ac8447803d63cea274f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 1454587302}
+  moveSpeed: 5
+  jumpForce: 3
+  rollSpeed: 8
+  rollDuration: 1.18
+  normalGravity: -9.81
+  glideGravity: -2
+  maxGlideFallSpeed: 2
 --- !u!1 &1166239822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,10 +1943,10 @@ PrefabInstance:
       addedObject: {fileID: 862400946}
     - targetCorrespondingSourceObject: {fileID: 6851108093046617133, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 862400945}
+      addedObject: {fileID: 862400944}
     - targetCorrespondingSourceObject: {fileID: 6851108093046617133, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 862400944}
+      addedObject: {fileID: 862400948}
   m_SourcePrefab: {fileID: 100100000, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
