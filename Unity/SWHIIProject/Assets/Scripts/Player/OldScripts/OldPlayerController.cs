@@ -46,8 +46,8 @@ public class OldPlayerController : MonoBehaviour
 
     private Animator animator;
     private PlayerState currentState = PlayerState.Idle;
+    public PlayerStat player = new PlayerStat();
 
-    PlayerStat player = new();
     private bool wasGrounded = false;
 
     private void Awake()
@@ -355,6 +355,14 @@ public class OldPlayerController : MonoBehaviour
         else
         {
             player.Stamina += player.Staminaregeneration * (int)Time.time;
+        }
+        if(isGliding)
+        {
+            player.GlidingStat -= Time.time*2f;
+        }
+        else
+        {
+            player.GlidingStat += Time.time;
         }
     }
   }
