@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerStateMachine stateMachine;
 
     public PlayerStat player;
+
     private void Awake()
     {
         player = GetComponent<PlayerStat>();
@@ -50,16 +51,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< HEAD
         stateMachine.SmUpdate();
-=======
-        HandleInput();
-        HandleStateMachine();
-        ApplyGravity();
-        MoveCharacter();
-        UpdateJumpAnimationSpeed();
         CharacterStat();
->>>>>>> 7bcfecefaca9f26bddea8c6d558fc3854f959d9d
     }
 
 
@@ -235,7 +228,6 @@ public class PlayerManager : MonoBehaviour
 
     //          controller.Move(moveDirection * moveSpeed * Time.deltaTime);
 
-<<<<<<< HEAD
     //          Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
     //          transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 15f);
     //      }
@@ -362,7 +354,6 @@ public class PlayerManager : MonoBehaviour
     //    }
     //}
 
-=======
     //플레이어 상태이상효과
     public void CharacterStat()
     {
@@ -422,7 +413,10 @@ public class PlayerManager : MonoBehaviour
             Debug.Log(player.GlidingStat);
             if (player.GlidingStat <= 0)
             {
-                StopGlideAndJumpAgain();
+                //  StopGlideAndJumpAgain();
+                // 현식 코드 바뀌어서 다 클래스화로 바뀌어서 일단 떨어지는 애니메이션으로 바뀌게 수정할게
+                stateMachine.ChageState(new JumpState(this, stateMachine));
+                animator.SetTrigger("JumpFromIdle");
             }
         }
         else
@@ -432,4 +426,3 @@ public class PlayerManager : MonoBehaviour
         }
     }
    }
->>>>>>> 7bcfecefaca9f26bddea8c6d558fc3854f959d9d
