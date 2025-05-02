@@ -32,6 +32,7 @@ public class PlayerStat : MonoBehaviour
     [Flags]
     public enum situation
     {
+        None,
         smallhunger,
         hunger,
         smallthirst,
@@ -40,7 +41,7 @@ public class PlayerStat : MonoBehaviour
         thirst,
         dead
     }
-    public situation Sit;
+    public situation Sit = situation.None;
 
     public float GlidingStat
     {
@@ -219,6 +220,10 @@ public class PlayerStat : MonoBehaviour
             staminaregeneration = value;
         }
     }
+    public PlayerStat()
+    {
+        glidingStat = 100f;
+    }
     //캐릭터생성뿐만아니라 장비장착에도 쓸수있을거같아서 =0 붙임 맨처음 스텟을 0으로 맞춰두고 하면되지않을까
     public PlayerStat(int hungryStat = 0, int thirstyStat = 0, int temperature = 0, int hp = 0, int stamina = 0, int weight = 0, int hpregeneration = 0, int stregeneration = 0, float GullidingStat = 0)
     {
@@ -230,6 +235,6 @@ public class PlayerStat : MonoBehaviour
         this.maxweight = weight;
         this.hpregeneration += hpregeneration;
         this.staminaregeneration += stregeneration;
-        this.maxglidingStat += GullidingStat;
+        this.glidingStat += GullidingStat;
     }
 }
