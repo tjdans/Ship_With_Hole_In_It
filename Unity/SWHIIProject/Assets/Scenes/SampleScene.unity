@@ -1209,6 +1209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ca76428c8ac8447803d63cea274f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 862400947}
+  animator: {fileID: 862400946}
+  playerInput: {fileID: 862400944}
   cameraTransform: {fileID: 1454587302}
   moveSpeed: 5
   jumpForce: 3
@@ -1217,6 +1220,11 @@ MonoBehaviour:
   normalGravity: -9.81
   glideGravity: -2
   maxGlideFallSpeed: 2
+  moveInput: {x: 0, y: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  isGliding: 0
+  isRolling: 0
 --- !u!1 &1166239822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1402,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1405441527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1574620213936421310, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+  m_PrefabInstance: {fileID: 8533237962324594702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1454587301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1459,7 @@ MonoBehaviour:
   sensitivity: 0.2
   pitchMin: -30
   pitchMax: 60
-  playerModel: {fileID: 862400942}
+  playerModel: {fileID: 1405441527}
   collisionMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1745,6 +1758,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1574620213936421310, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576973268568916896, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590113832065298219, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713044047280658713, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2766404282853571676, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -1765,6 +1794,10 @@ PrefabInstance:
       propertyPath: camerTransform
       value: 
       objectReference: {fileID: 1454587302}
+    - target: {fileID: 3588357927058463177, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4035155557874529489, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1773,9 +1806,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5042166902811120343, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5518983335924928549, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5547223901965854490, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5721857584750163867, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       propertyPath: playerModel
@@ -1913,6 +1954,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7695477567834565775, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8303686357215421125, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       propertyPath: m_Height
       value: 1.2
@@ -1928,6 +1973,10 @@ PrefabInstance:
     - target: {fileID: 8303686357215421125, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
       propertyPath: m_MinMoveDistance
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173743391294497365, guid: 0b88f83eaa45fb34792cb20ab5a3a9b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
