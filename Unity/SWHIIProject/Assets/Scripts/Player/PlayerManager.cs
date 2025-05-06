@@ -402,11 +402,12 @@ public class PlayerManager : MonoBehaviour
         {
             player.Stamina += player.Staminaregeneration * 0;
         }
-        if (!player.Sit.HasFlag(PlayerStat.situation.thirst)&&!player.Sit.HasFlag(PlayerStat.situation.smallthirst)&&currentState == PlayerState.Idle)
+        /*
+        if (!player.Sit.HasFlag(PlayerStat.situation.thirst)&&!player.Sit.HasFlag(PlayerStat.situation.smallthirst)&&currentState == PlayerState.idle)
         {
             player.Stamina += player.Staminaregeneration * (int)Time.time;
         }
-
+        */
         if (isGliding == true)
         {
             player.GlidingStat -= Time.deltaTime * 2f;
