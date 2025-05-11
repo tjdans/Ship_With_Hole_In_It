@@ -31,6 +31,7 @@ public class GlideState : PlayerState
 
     public override void PsUpdate()
     {
+
         // W키만 이동 허용
         if (player.moveInput.y > 0.1f && Mathf.Abs(player.moveInput.x) < 0.1f)
         {

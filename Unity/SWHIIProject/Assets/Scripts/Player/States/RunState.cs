@@ -4,7 +4,6 @@ public class RunState : PlayerState
 {
     public RunState(PlayerManager player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
 
-
     public override void Enter()
     {
         player.animator.SetBool("isRunning", true);
@@ -27,6 +26,7 @@ public class RunState : PlayerState
 
     public override void PsUpdate()
     {
+
         Vector3 move = new Vector3(player.moveInput.x, 0, player.moveInput.y);
         move = Quaternion.Euler(0, player.cameraTransform.eulerAngles.y, 0) * move;
         move.Normalize();

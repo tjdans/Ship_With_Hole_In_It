@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 10038fdbf93c4dd43af9ce774d03a956
+guid: c44eb1a4b7b7bc8419dbb6bd38d34131
 AssetOrigin:
   serializedVersion: 1
-  productId: 220038
-  packageName: PicoChan
-  packageVersion: 1.1.0
-  assetPath: Assets/Picola/PicoChan/Models/pico_chan_chr_pico_00.fbx
-  uploadId: 697236
+  productId: 251039
+  packageName: Warrior + Axe
+  packageVersion: 1.0
+  assetPath: Assets/Model/Warrior/Model/Axe.fbx
+  uploadId: 573709
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -14,53 +14,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: pico_bag_m
-    second: {fileID: 2100000, guid: 7b2a83947805e6446b467d3dff391145, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_body_m
-    second: {fileID: 2100000, guid: 4d9e79636f142374baf5df39ad6fe194, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_body_metal_m
-    second: {fileID: 2100000, guid: 931caee363d9040409f9d43593d21469, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_clothes_lens_m
-    second: {fileID: 2100000, guid: a536b623e9a4ec54581a8c2fc17418fe, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_clothes_m
-    second: {fileID: 2100000, guid: c09f00b9fc06ea7478baf60cd314e58c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_clothes_metal_m
-    second: {fileID: 2100000, guid: ca05c380c9340bf49ad5c5f0b8669a49, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_eye_h_m
-    second: {fileID: 2100000, guid: f974f43b29494b941906f0eb9d727614, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_eye_m
-    second: {fileID: 2100000, guid: 878aefd75248a2046904bc20188aeef8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_face_m
-    second: {fileID: 2100000, guid: b025e7212b95566479c77e8be2cc07ef, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pico_hair_m
-    second: {fileID: 2100000, guid: 9db64f59438bddf4fa3a1e4514aa10f6, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: 734ca431a4103ca4ba953a5ed8efc424, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -79,7 +34,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -90,14 +45,14 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.6
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
     importVisibility: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     importCameras: 0
     importLights: 0
     nodeNameCollisionStrategy: 0
@@ -145,19 +100,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.006
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 0
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 0
-  remapMaterialsIfMaterialImportModeIsNone: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

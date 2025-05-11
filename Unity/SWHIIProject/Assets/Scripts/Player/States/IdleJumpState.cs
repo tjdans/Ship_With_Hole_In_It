@@ -10,14 +10,12 @@ public class IdleJumpState : PlayerState
 
     public override void Enter()
     {
-        player.animator.SetBool("Idle", false);
         player.animator.SetTrigger("JumpFromIdle");
         player.velocity.y = Mathf.Sqrt(player.jumpForce * -2f * player.normalGravity);
     }
 
     public override void PsUpdate()
     {
-
         ApplyGravity();
 
         Vector3 move = new Vector3(0, player.velocity.y, 0);
