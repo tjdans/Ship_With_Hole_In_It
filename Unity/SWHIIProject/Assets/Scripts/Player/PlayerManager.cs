@@ -73,12 +73,12 @@ public class PlayerManager : MonoBehaviour
     //무기 해제하는 함수(무기가 있는 퀵슬롯에서 다른 퀵슬롯으로 선택되었을 때 )
     public void UnequipWeapon()
     {
+        animator.SetBool("WeaponIdle", false);
         if (equippedWeapon == null) return;
 
         equippedWeapon = null;
-    // meleeWeaponObject.SetActive(false);
-        //animator.SetTrigger("SheatheWeapon");
         stateMachine.ChageState(new IdleState(this, stateMachine));
+
     }
 
     //무기를 들었는지 확인용

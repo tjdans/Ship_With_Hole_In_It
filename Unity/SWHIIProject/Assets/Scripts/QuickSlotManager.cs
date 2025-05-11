@@ -51,7 +51,13 @@ public class QuickSlotManager : MonoBehaviour
 
         int slotIndex = keyNum - 1;
 
-        
+        // 공격 중일 때는 애니메이션이 끝날 때까지 대기
+        if (playerManager.currentState is MeleeAttack1State || playerManager.currentState is MeleeAttack2State)
+        {
+            Debug.Log("공격 중 - 애니메이션 종료 후 퀵슬롯 전환");
+            return;  // 공격 애니메이션이 끝날 때까지 대기
+        }
+
         if (slotIndex >= 0 && slotIndex < quickSlotItems.Length)
         {
             ItemData item = quickSlotItems[slotIndex];
