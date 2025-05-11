@@ -124,13 +124,12 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            player.HungryStat -= player.Hpregeneration * (int)Time.time;
             player.ThirstyStat -= player.Staminaregeneration * (int)Time.time;
             moveSpeed = 5.0f;
         }
         //변수명 고치기 귀찮아서 내일고침 목마름수치 0되면 스테미너 회복정지
         //플레이어 목마름수치가 50%이하일 경우 스테미너 회복 속도 감소
-        if (player.Sit.HasFlag(PlayerStat.situation.smallhunger))
+        if (player.Sit.HasFlag(PlayerStat.situation.smallthirst))
         {
             player.Stamina += player.Staminaregeneration * (int)Time.time / 2;
         }
@@ -138,10 +137,12 @@ public class PlayerManager : MonoBehaviour
         {
             player.Stamina += player.Staminaregeneration * 0;
         }
-        else
+        /*
+        if (!player.Sit.HasFlag(PlayerStat.situation.thirst)&&!player.Sit.HasFlag(PlayerStat.situation.smallthirst)&&currentState == PlayerState.idle)
         {
             player.Stamina += player.Staminaregeneration * (int)Time.time;
         }
+        */
         if (isGliding == true)
         {
             player.GlidingStat -= Time.deltaTime * 2f;

@@ -23,7 +23,7 @@ public class PlayerStat : MonoBehaviour
     private int stamina;
     private int weight;
     [SerializeField]
-    private float glidingStat=100f;
+    private float glidingStat;
     private int hpregeneration=1;
     private int staminaregeneration=1;
 
@@ -220,9 +220,17 @@ public class PlayerStat : MonoBehaviour
             staminaregeneration = value;
         }
     }
+    //1빠따로 캐릭생성시1회용
     public PlayerStat()
     {
-        glidingStat = 100f;
+        this.hungryStat = maxhungryStat;
+        this.thirstyStat = maxthirstyStat;
+        this.maxhp = hp;
+        this.stamina = maxstamina;
+        this.weight = 0;
+        this.hpregeneration = 1;
+        this.staminaregeneration = 1;
+        this.glidingStat = maxglidingStat;
     }
     //캐릭터생성뿐만아니라 장비장착에도 쓸수있을거같아서 =0 붙임 맨처음 스텟을 0으로 맞춰두고 하면되지않을까
     public PlayerStat(int hungryStat = 0, int thirstyStat = 0, int temperature = 0, int hp = 0, int stamina = 0, int weight = 0, int hpregeneration = 0, int stregeneration = 0, float GullidingStat = 0)
