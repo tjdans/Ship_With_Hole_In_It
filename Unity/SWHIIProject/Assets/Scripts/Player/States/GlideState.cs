@@ -9,11 +9,13 @@ public class GlideState : PlayerState
     public override void Enter()
     {
         player.isGliding = true;
+        player.isGlideToJump = true;
         player.animator.SetBool("isGliding", true);
     }
 
     public override void Exit()
     {
+        player.isGliding = false;
         player.animator.SetBool("isGliding", false);
     }
 

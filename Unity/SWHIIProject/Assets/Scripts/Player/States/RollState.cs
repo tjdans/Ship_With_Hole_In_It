@@ -27,9 +27,7 @@ public class RollState : PlayerState
 
         if (timer >= player.rollDuration)
         {
-            stateMachine.ChageState(player.moveInput.magnitude > 0.1f
-                ? new RunState(player, stateMachine)
-                : new IdleState(player, stateMachine));
+            stateMachine.ChageState(new LocomotionState(player, stateMachine));
         }
     }
 }

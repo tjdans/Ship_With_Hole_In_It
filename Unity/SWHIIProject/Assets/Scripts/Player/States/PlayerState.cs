@@ -4,6 +4,7 @@ public abstract class PlayerState
 {
     protected PlayerManager player;
     protected PlayerStateMachine stateMachine;
+    protected int animBoolHash;
 
     protected PlayerState(PlayerManager player, PlayerStateMachine stateMachine)
     {

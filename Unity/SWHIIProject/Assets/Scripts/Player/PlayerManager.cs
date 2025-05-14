@@ -16,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     public Transform cameraTransform;
 
     [Header("Settings")]
-    public float moveSpeed = 5.0f;
+    public float moveSpeed = 2.0f;
+    public float runSpeed = 5.0f;
     public float jumpForce = 5.0f;
     public float rollSpeed = 8.0f;
     public float rollDuration = 1.18f;
@@ -29,6 +30,8 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public Vector3 velocity;
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public bool isGliding;
+    [HideInInspector] public bool isGlideToJump = false; // 글라이드 상태에서 다시 점프로 왔는지 판단하는 변수
+    [HideInInspector] public bool isRunning;
     [HideInInspector] public bool isRolling;
 
     public int comboStep = 0;
@@ -51,7 +54,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        stateMachine.Initialize(new IdleState(this, stateMachine));
+        stateMachine.Initialize(new LocomotionState(this, stateMachine));
     }
 
     private void Update()
@@ -77,7 +80,7 @@ public class PlayerManager : MonoBehaviour
         if (equippedWeapon == null) return;
 
         equippedWeapon = null;
-        stateMachine.ChageState(new IdleState(this, stateMachine));
+        stateMachine.ChageState(new LocomotionState(this, stateMachine));
 
     }
 
@@ -87,6 +90,11 @@ public class PlayerManager : MonoBehaviour
     public bool CurrentStateIs(Type stateType)
     {
         return currentState != null && currentState.GetType() == stateType;
+    }
+
+    public void LandToLocomotion()
+    {
+        stateMachine.ChageState(new LocomotionState(this, stateMachine));
     }
 
     //플레이어 상태이상효과

@@ -79,7 +79,7 @@ public class QuickSlotManager : MonoBehaviour
     public void HandleItemEquip(ItemData item)
     {
 
-        switch (item.itemType)
+        switch (item.itemType)  
         {
             case ItemData.ItemType.MeleeWeapon:
             case ItemData.ItemType.Bow:

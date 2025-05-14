@@ -7,20 +7,18 @@ public class JumpState : PlayerState
     bool allowAirControl = false;
 
     public JumpState(PlayerManager player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
-    Vector3 move = new Vector3(0, 0, 0);
 
     public override void Enter()
     {
-        if(!player.isGliding)
+        if (!player.isGlideToJump)
         // 점프 초기 속도 적용
         player.velocity.y = Mathf.Sqrt(player.jumpForce * -2f * player.normalGravity);
 
         // 달리기 중 점프이면 이동 허용
-        allowAirControl = player.moveInput.magnitude > 0.1f;
+        allowAirControl = player.animator.GetFloat("MoveSpeed") > 0.5f ? true : false; 
 
         // 애니메이션 전환
         player.animator.SetTrigger(allowAirControl ? "JumpFromRun" : "JumpFromIdle");
-        player.animator.SetBool("Idle", false);
     }
 
     public override void HandleInput()
@@ -61,9 +59,6 @@ public class JumpState : PlayerState
         {
             player.isGliding = false;
             player.animator.SetTrigger("Land");
-            stateMachine.ChageState(player.moveInput.magnitude > 0.1f
-                ? new RunState(player, stateMachine)
-                : new IdleState(player, stateMachine));
         }
     }
 }
