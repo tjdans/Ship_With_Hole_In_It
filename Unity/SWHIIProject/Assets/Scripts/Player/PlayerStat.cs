@@ -55,7 +55,6 @@ public class PlayerStat : MonoBehaviour
             if (glidingStat <= 0)
             {
                 glidingStat = 0;
-
             }
             if (glidingStat >= maxglidingStat)
             {
