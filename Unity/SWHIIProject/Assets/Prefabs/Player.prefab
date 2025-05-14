@@ -440,6 +440,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5072366d-cd40-4fdf-bff1-089817a7795e
     m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 18ab287c-845c-4ffd-847c-4b609af35662
+    m_ActionName: 'Player/Run[/Keyboard/leftShift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -461,8 +465,8 @@ MonoBehaviour:
   animator: {fileID: 2464415471646749220}
   playerInput: {fileID: 1355647653829261835}
   cameraTransform: {fileID: 0}
-  meleeWeaponObject: {fileID: 0}
   moveSpeed: 5
+  runSpeed: 5
   jumpForce: 3
   rollSpeed: 8
   rollDuration: 1.18
@@ -474,6 +478,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   isGliding: 0
+  isGlideToJump: 0
+  isRunning: 0
   isRolling: 0
   comboStep: 0
   player: {fileID: 0}

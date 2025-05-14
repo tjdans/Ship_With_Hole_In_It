@@ -30,15 +30,16 @@ public class LocomotionState : PlayerState
         move *= speed;
 
         ApplyGravity();
-        move.y = player.velocity.y;
-
+        //아니 이게 왜 문제지 이걸 초기화하면 계속 플레이어 Transform의 Rotation Y축이 0으로 초기화됌; 뭐가 문제야
+        // move.y = player.velocity.y;
+       // Debug.Log(player.velocity.y); // -2~ -20정도 찍힘
         Move(move);
 
         if (move.sqrMagnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(move.x, 0, move.z));
             player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, Time.deltaTime * 15f);
-        }
+    }
 
         // 블렌드 트리 파라미터 업데이트
         float moveAmount = player.moveInput.magnitude;

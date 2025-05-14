@@ -55,6 +55,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         stateMachine.Initialize(new LocomotionState(this, stateMachine));
+
     }
 
     private void Update()
