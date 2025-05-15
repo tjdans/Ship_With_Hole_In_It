@@ -129,12 +129,12 @@ public class PlayerManager : MonoBehaviour
             //무게를 초과하여 들 경우 2배로 배고픔,수분수치 감소 + 이속 50%로 감소
             player.HungryStat -= player.Hpregeneration * 2 * (int)Time.time;
             player.ThirstyStat -= player.Staminaregeneration * 2 * (int)Time.time;
-            moveSpeed = 2.5f; // 일단 숫자로 함 아직 뭐 더 안나왔으니
+        //    moveSpeed = 2.5f; // 일단 숫자로 함 아직 뭐 더 안나왔으니
         }
         else
         {
             player.ThirstyStat -= player.Staminaregeneration * (int)Time.time;
-            moveSpeed = 5.0f;
+          //  moveSpeed = 5.0f;
         }
         //변수명 고치기 귀찮아서 내일고침 목마름수치 0되면 스테미너 회복정지
         //플레이어 목마름수치가 50%이하일 경우 스테미너 회복 속도 감소
