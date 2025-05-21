@@ -51,12 +51,7 @@ public class QuickSlotManager : MonoBehaviour
 
         int slotIndex = keyNum - 1;
 
-        // 공격 중일 때는 애니메이션이 끝날 때까지 대기
-        if (playerManager.currentState is MeleeAttack1State || playerManager.currentState is MeleeAttack2State)
-        {
-            Debug.Log("공격 중 - 애니메이션 종료 후 퀵슬롯 전환");
-            return;  // 공격 애니메이션이 끝날 때까지 대기
-        }
+
 
         if (slotIndex >= 0 && slotIndex < quickSlotItems.Length)
         {
@@ -65,7 +60,7 @@ public class QuickSlotManager : MonoBehaviour
             {
                 UpdateSlotSelectionUI(slotIndex); // 테두리 교체
                 ReplaceItemPrefab(item); // 프리팹 생성,삭제
-                if (playerManager.currentState is IdleState || playerManager.currentState is RunState)
+                if (playerManager.currentState is LocomotionState || playerManager.currentState is MeleeIdleState)
                 {
                     Debug.Log(" ture");
                     HandleItemEquip(item);
@@ -88,6 +83,7 @@ public class QuickSlotManager : MonoBehaviour
 
             case ItemData.ItemType.consumable:
                 item.Use(playerManager); // 소모품 사용
+                playerManager.animator.SetBool("WeaponIdle", false);
                 break;
 
             // 무기를 집어넣는 애니메이션 호출 및 처리(재료 아이템들때 기존에 들고있던 무기를 집어넣도록)
@@ -130,7 +126,7 @@ public class QuickSlotManager : MonoBehaviour
             }
 
             quickSlotUI[i].slotFrame.sprite = (i == currentSelectedIndex) ? selectedFrameSprite : normalFrameSprite;
-            Debug.Log($"Slot {i}: item = {quickSlotItems[i]?.name}, icon = {quickSlotItems[i]?.icon}");
+         //   Debug.Log($"Slot {i}: item = {quickSlotItems[i]?.name}, icon = {quickSlotItems[i]?.icon}");
         }
     }
    

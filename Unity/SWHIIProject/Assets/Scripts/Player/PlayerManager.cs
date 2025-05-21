@@ -29,12 +29,15 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public Vector2 moveInput;
     [HideInInspector] public Vector3 velocity;
     [HideInInspector] public Vector3 moveDirection;
-    [HideInInspector] public bool isGliding;
+    [HideInInspector] public bool isGliding = false;
     [HideInInspector] public bool isGlideToJump = false; // 글라이드 상태에서 다시 점프로 왔는지 판단하는 변수
-    [HideInInspector] public bool isRunning;
-    [HideInInspector] public bool isRolling;
+    [HideInInspector] public bool isRunning = false;
+    [HideInInspector] public bool isRolling = false;
+    [HideInInspector] public bool isBattle = false;
 
-    public int comboStep = 0;
+    public int comboStep = 1;
+    public bool canCombo = false;
+    public bool comboQueued = false;
 
     private PlayerStateMachine stateMachine;
     public PlayerState currentState => stateMachine.currentState;
@@ -67,16 +70,18 @@ public class PlayerManager : MonoBehaviour
     //무기를 드는 함수(무기가 있는 퀵슬롯을 선택 했을 때)
     public void EquipWeapon(ItemData weapon)
     {
+        isBattle = true;
         if (equippedWeapon == weapon) return;
 
         equippedWeapon = weapon;
        // animator.SetTrigger("DrawWeapon");
-        stateMachine.ChageState(new MeleeIdleState(this, stateMachine));
+        stateMachine.ChageState(new LocomotionState(this, stateMachine));
     }
 
     //무기 해제하는 함수(무기가 있는 퀵슬롯에서 다른 퀵슬롯으로 선택되었을 때 )
     public void UnequipWeapon()
     {
+        isBattle = false;
         animator.SetBool("WeaponIdle", false);
         if (equippedWeapon == null) return;
 
@@ -93,10 +98,26 @@ public class PlayerManager : MonoBehaviour
         return currentState != null && currentState.GetType() == stateType;
     }
 
+    // 플레이어 애니메이션 이벤트 함수 --------------------------------
+    //무기 없이 점프 착지에 호출됨
     public void LandToLocomotion()
     {
         stateMachine.ChageState(new LocomotionState(this, stateMachine));
     }
+
+    // 콤보 가능 시간에 호출됨 (애니메이션 이벤트)
+    public void EnableCombo()
+    {
+        canCombo = true;
+
+    }
+
+    // 콤보 불가능 상태로 종료 (애니메이션 끝나는 지점에서 호출)
+    public void DisableCombo()
+    {
+        canCombo = false;
+    }
+    //---------------------------------------------------------------
 
     //플레이어 상태이상효과
     public void CharacterStat()
