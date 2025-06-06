@@ -122,6 +122,7 @@ public class PlayerManager : MonoBehaviour
     //플레이어 상태이상효과
     public void CharacterStat()
     {
+        Debug.Log(player.Sit);
         //탈진상태인 경우에서 일단 스테미너 회복 최대치까지 안됬을경우
         if (player.Sit.HasFlag(PlayerStat.situation.exhaustion))
         {
@@ -136,6 +137,7 @@ public class PlayerManager : MonoBehaviour
         //배고파서 채력 떨어지는경우(피격당할때 hp감소되는건 따로 함수쓰는게 나을듯? 싶어서? ㅇㅇ)
         else if (player.Sit.HasFlag(PlayerStat.situation.hunger))
         {
+            Debug.Log(player.Hp);
             player.Hp -= (int)Time.time;
             player.HungryStat -= 0;
         }

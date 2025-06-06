@@ -97,11 +97,13 @@ public class PlayerStat : MonoBehaviour
             {
                 Sit |= situation.smallhunger;
             }
-            else if (hungryStat <= 0)
+            if (hungryStat <= 0)
             {
                 hungryStat = 0;
+                Sit &= ~situation.smallhunger;
                 //안되면 float로 바꾸지 뭐
                 Sit |= situation.hunger;
+           
             }
             if (Sit.HasFlag(situation.hunger) && hungryStat > 0)
             {
@@ -166,7 +168,7 @@ public class PlayerStat : MonoBehaviour
             }
             if (Sit.HasFlag(situation.haviness) && weight <= maxweight)
             {
-                Sit &= ~situation.exhaustion;
+                Sit &= ~situation.haviness;
             }
         }
     }
@@ -222,8 +224,8 @@ public class PlayerStat : MonoBehaviour
     //1빠따로 캐릭생성시1회용
     public PlayerStat()
     {
-        this.hungryStat = maxhungryStat;
-        this.thirstyStat = maxthirstyStat;
+        this.hungryStat = 0;
+        this.thirstyStat = 0;
         this.maxhp = hp;
         this.stamina = maxstamina;
         this.weight = 0;
